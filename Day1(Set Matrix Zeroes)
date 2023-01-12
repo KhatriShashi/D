@@ -25,3 +25,56 @@ class Solution {
 }
    
 """
+//2nd Method
+"""
+class Solution {
+    public void setZeroes(int[][] matrix) {
+       int n=matrix.length;
+       int m=matrix[0].length;
+    //   whether taking dummy array we assume zeroth row and col as dummy array
+    // intially we set with false if zero find in zeroth row and col then set to true
+       boolean row=false;
+       boolean col=false;
+       for(int i=0;i<n;i++)if(matrix[i][0]==0)col=true;
+       for(int j=0;j<m;j++)if(matrix[0][j]==0)row=true;
+    //    if zero find in the matrix then set zeroth row and col to be zero
+       for(int i=0;i<n;i++){
+           for(int j=0;j<m;j++){
+               if(matrix[i][j]==0){
+                   matrix[i][0]=0;
+                   matrix[0][j]=0;
+               }
+           }
+       }
+    // now traverse zeroth row
+    for(int i=1;i<n;i++){
+        if(matrix[i][0]==0){
+            for(int j=1;j<m;j++){
+                matrix[i][j]=0;
+            }
+        }
+    }
+    //  now traverse zeroth col
+     for(int j=1;j<m;j++){
+        if(matrix[0][j]==0){
+            for(int i=1;i<n;i++){
+                matrix[i][j]=0;
+            }
+        }
+    }
+    //now set zeroth col to be zero
+    if(row==true){
+        for(int i=0;i<m;i++){
+            matrix[0][i]=0;
+        }
+    }
+    //now set zeroth row to be zero
+    if(col==true){
+        for(int i=0;i<n;i++){
+            matrix[i][0]=0;
+        }
+    }
+    
+    }
+}
+"""
