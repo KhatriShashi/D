@@ -26,3 +26,30 @@ class Solution {
     }
 }
 """
+
+"""
+class Solution {
+    public int minimumDeletions(int[] nums) {
+        int min_index=0;
+        int max_index=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>nums[max_index]){
+                max_index=i;
+            }
+            if(nums[i]<nums[min_index]){
+                min_index=i;
+            }
+        }
+        //case:1-delte from left
+        int right_most=Math.max(max_index,min_index);
+        int delete_from_left=right_most+1;
+        //case:2-delete from right
+        int left_most=Math.min(max_index,min_index);
+        int delete_from_right=nums.length-left_most;
+        //case:3-delete from both end
+        int delete_from_both_side=(nums.length-right_most)+(left_most+1);
+        
+     return Math.min(Math.min(delete_from_left,delete_from_right),delete_from_both_side);
+    }
+}
+"""
