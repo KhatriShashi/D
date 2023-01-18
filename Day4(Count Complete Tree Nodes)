@@ -11,3 +11,28 @@ class Solution {
     }
 }
 """
+//2nd method using queue
+"""
+class Solution {
+    public int countNodes(TreeNode root) {
+        Queue<TreeNode> q=new LinkedList<>();
+        if(root==null){
+            return 0;
+        }
+        int res=0;
+        q.add(root);
+        while(!q.isEmpty()){
+            TreeNode temp=q.remove();
+            res++;
+            if(temp.left!=null){
+                q.add(temp.left);
+            }
+            if(temp.right!=null){
+                q.add(temp.right);
+            }
+        }
+
+        return res;
+    }
+}
+"""
